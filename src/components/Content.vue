@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <div class="container nt-5">
     <p>
         {{txt}}
     </p>
-    </div>
+    
     <!-- <List :prenom="prenom.taille"/> -->
     <List :prenom="prenom"/>
+    </div>
 </template>
 
 <script>
