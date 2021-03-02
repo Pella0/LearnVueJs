@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import {emitter} from '../../main'
+
 export default {
     name: 'List',
     data(){
@@ -57,7 +59,8 @@ export default {
             this.txt ="";
         } */
         changeTitle: function(){
-            this.$emit('changeTitle', 'Mon nouveau titre')
+            /* this.$emit('changeTitle', 'Mon nouveau titre') */
+            emitter.emit('changeTitle', 'Titre changer avec emitter')
         }
     }
 }

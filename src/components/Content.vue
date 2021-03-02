@@ -7,7 +7,8 @@
     
     <!-- <List :prenom="prenom.taille"/> -->
     <!-- <List :prenom="prenom"/> -->
-    <List :myArr="myArr" :txt="txt" v-on:changeTitle="changementTitle($event)"/>
+    <!-- v-on:changeTitle="changementTitle($event) -->
+    <List :myArr="myArr" :txt="txt" />
     <!-- <List :myArr="myArr" :txt="txt"/> -->
 
     </div>
@@ -43,9 +44,10 @@ export default {
         List
     },
     methods: {
-     changementTitle: function(nwTitle){
+     /* changementTitle: function(nwTitle){
             this.title = nwTitle;
-        } 
+        }  */
+        
     }
 } 
 
