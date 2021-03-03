@@ -18,11 +18,9 @@
             <div class="btn btn-outline-primary mr-2" @click='toggleOng1'>Onglet 1</div>
             <div class="btn btn-outline-primary" @click='toggleOng2'>Onglet 2</div>
             
-            <div class="card mb-5" v-if="toggle1">
-                <Texte1 class="p-5"/>
-            </div>
-            <div class="card mb-5" v-if="toggle2">
-                <Texte2 class="p-5"/>
+            <div class="card mb-5">
+                <Texte1 class="p-5" v-if="toggle1"/>
+                <Texte2 class="p-5" v-if="toggle2"/>
             </div>
     </div>
 </template>
