@@ -15,12 +15,17 @@
         </template>
     </List> -->
     <!-- <List :myArr="myArr" :txt="txt"/> -->
-            <div class="btn btn-outline-primary mr-2" @click='toggleOng1'>Onglet 1</div>
-            <div class="btn btn-outline-primary" @click='toggleOng2'>Onglet 2</div>
-            
+
+    
+            <!-- <div class="btn btn-outline-primary mr-2" @click='toggleOng1'>Onglet 1</div>
+            <div class="btn btn-outline-primary" @click='toggleOng2'>Onglet 2</div> -->
+            <div class="btn btn-outline-primary mr-2" @click="component='Texte1'">Onglet 1</div>
+            <div class="btn btn-outline-primary" @click="component='Texte2'">Onglet 2</div>
+
             <div class="card mb-5">
-                <Texte1 class="p-5" v-if="toggle1"/>
-                <Texte2 class="p-5" v-if="toggle2"/>
+                <!-- <Texte1 class="p-5" v-if="toggle1"/>
+                <Texte2 class="p-5" v-if="toggle2"/> -->
+                <component class="p-5" :is="component"></component>
             </div>
     </div>
 </template>
@@ -52,7 +57,8 @@ export default {
             txt:'Hello World',
             title: 'Je suis le titre',
             toggle1: true,
-            toggle2: false
+            toggle2: false,
+            component:'Texte1'
         }
     },
     components: {
