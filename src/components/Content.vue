@@ -8,7 +8,12 @@
     <!-- <List :prenom="prenom.taille"/> -->
     <!-- <List :prenom="prenom"/> -->
     <!-- v-on:changeTitle="changementTitle($event) -->
-    <List :myArr="myArr" :txt="txt" />
+    <List :myArr="myArr" :txt="txt">
+        <p>Envoyez</p>
+        <template v-slot:info>
+            <h1>Le contenu du slot nommé</h1>
+        </template>
+    </List>
     <!-- <List :myArr="myArr" :txt="txt"/> -->
 
     </div>

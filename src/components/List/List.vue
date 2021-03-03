@@ -18,7 +18,11 @@
         <!-- <div v-on:click="supprFilm" class="btn btn-danger mt-2" >Supprime le film</div>
         <div @click="supprTxt" class="btn btn-danger mt-2 ml-2" >Supprime le txt</div>
     -->
-        <div @click="changeTitle" class="btn btn-danger mt-2 ml-2" >Modifier le titre</div>
+        <div @click="changeTitle" class="btn btn-danger mt-2" >Modifier le titre</div>
+        <slot>
+            Patientez
+        </slot>
+        <slot name="info"></slot>
     </div> 
 </template>
 
