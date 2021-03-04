@@ -8,7 +8,7 @@
 
 <script>
 
-import {emitter} from '../main'
+/* import {emitter} from '../../main' */
  
 export default {
     name: 'Header',
@@ -17,7 +17,7 @@ export default {
             titre: 'Mont titre de base'
         }
     },
-    beforeCreate(){
+    /* beforeCreate(){
         console.log('il va etre créé !');
     },
     created(){
@@ -36,7 +36,7 @@ export default {
     },
     updated(){
         console.log("Le composant s'est bien à jour!");
-    }
+    } */
 }
 </script>
 
