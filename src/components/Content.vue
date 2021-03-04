@@ -27,6 +27,11 @@
                 <Texte2 class="p-5" v-if="toggle2"/> -->
                 <component class="p-5" :is="component"></component>
             </div>
+
+            <div class="btn btn-success mr-2" @click='toggleReveal'>Modale</div>
+            
+                <Modale :reveal="reveal" :toggleReveal="toggleReveal"/>
+            
     </div>
 </template>
 
@@ -35,20 +40,14 @@
 
 import Texte1 from './Text/Texte1'
 import Texte2 from './Text/Texte2'
+import Modale from './Modale.vue'
+
 /* import List from './List/List.vue' */
 
 export default {
     name:'Content',  
     data(){
         return {
-           /*  txt: 'je suis le contenu', */
-            /* prenom: {
-                taille: 188 
-            } */
-            /* prenom: ['Fraise', 'banane'] */
-            /* prenom: function(){
-                console.log('Hello depuis le parents')
-            } */
             myArr: [
                 {titre: 'Inception', date: 2010},
                 {titre: 'Ace Ventura', date: 1994},
@@ -58,18 +57,27 @@ export default {
             title: 'Je suis le titre',
             toggle1: true,
             toggle2: false,
-            component:'Texte1'
+            component:'Texte1',
+            reveal: false,
+             
+           /*  txt: 'je suis le contenu', */
+            /* prenom: {
+                taille: 188 
+            } */
+            /* prenom: ['Fraise', 'banane'] */
+            /* prenom: function(){
+                console.log('Hello depuis le parents')
+            } */
         }
     },
     components: {
         /* List */
         Texte2,
-        Texte1
+        Texte1,
+        Modale
+        
     },
     methods: {
-     /* changementTitle: function(nwTitle){
-            this.title = nwTitle;
-        }  */
         toggleOng1: function(){
             this.toggle1 = true
             this.toggle2= false
@@ -77,7 +85,13 @@ export default {
         toggleOng2: function(){
             this.toggle1 = false
             this.toggle2= true
-        }     
+        },
+        toggleReveal: function(){
+            this.reveal = !this.reveal
+        },     
+     /* changementTitle: function(nwTitle){
+            this.title = nwTitle;
+        }  */
     }
 } 
 
