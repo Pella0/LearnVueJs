@@ -4,18 +4,57 @@
         <form >
             <div class="form-group">
                 <label for="prenom">Ton prenom</label>
-                <input v-model="prenom" type="text" class="form-control">
+                <input v-on:input="toggleResult"  v-model.lazy="formData.prenom" type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label for="txt">Ton prenom</label><br/>
-                <textarea v-model="txt" name="form-control" id="txt"></textarea>
+                <label for="txt">Ton Texte</label><br/>
+                <textarea v-model.lazy="formData.txt" name="form-control" id="txt"></textarea>
             </div>
-            <h2>Resultats</h2>
-            <div class="card p-3">
-                <p>Prenom : {{prenom}}</p>
-                <p>Texte : {{txt}}</p>
+
+            <h3>SelectBox</h3>
+            <select v-model="formData.select">
+                <option v-for="(pays, index) in formData.listPays" :key="index">{{pays}}</option>
+            </select>
+
+
+            <h3 class="mt-3">Checkbox</h3>
+
+            <div class="form-check">
+                <input v-model="formData.checkFruits" value="fraise" id="fraise" type="checkbox" class="form-check-input">
+                <label for="fraise">Fraise</label>
             </div>
+
+            <div class="form-check">
+                <input v-model="formData.checkFruits" value="banane" id="banane" type="checkbox" class="form-check-input">
+                <label for="banane">banane</label>
+            </div>
+
+            <div class="form-check">
+                <input v-model="formData.checkFruits" value="cacahuete" id="cacahuete" type="checkbox" class="form-check-input">
+                <label for="cacahuete">cacahuete</label>
+            </div>
+
+
+
+                <button @click.prevent="sendForm" class="btn btn-primary mt-3">Envoyer les données</button>
+
         </form>
+    </div>
+
+    <div v-if="infoSubmit">
+        <h2>Resultats</h2>
+        <div class="card p-3">
+            <p>Prenom : {{formData.prenom}}</p>
+            <p style="white-space: pre">Texte : {{formData.txt}}</p>
+            
+            <p>Select Resultats : {{formData.select}}</p>
+            
+            
+            <p>Resultat Checkbox</p>
+            <ul>
+                <li v-for="(fruit,index) in formData.checkFruits" :key="index">{{fruit}}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -23,40 +62,38 @@
 <script>
 
 
-/* import Texte1 from './Text/Texte1'
-import Texte2 from './Text/Texte2'
-import Modale from './Modale/Modale.vue' */
-/* import List from './List/List.vue' */
-/* import axios from 'axios' */
+
 
 
 export default {
     name:'Content',  
     data(){
         return {
-            prenom: '',
-            txt: ''
+            formData:{
+                prenom: '',
+                txt: '',
+                checkFruits: [],
+                select: '',
+                listPays: ['Russie', 'France', 'Canada', 'Afrique du Sud']
+                
+            },
+            infoSubmit: false,
         }
     },
-    /* components: {
-        List,
-        Texte2,
-        Texte1,
-        Modale 
-        
-    }, */
-    methods: {
+    components: {
         
         
     },
-    /* mounted(){
-        axios
-        .get('https://api.thecatapi.com/v1/images/search')
-        .then(res => {
-            console.log(res);
-            this.urlImg = res.data[0].url
-        })
-    } */
+    methods: {
+        sendForm: function(){
+            this.infoSubmit = true
+        },
+        toggleResult: function(){
+            this.infoSubmit=false
+        }
+        
+    },
+    
 } 
 
 </script>
