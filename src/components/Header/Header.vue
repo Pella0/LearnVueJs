@@ -1,14 +1,24 @@
 <template>
     <div class="header-top">
-        <p>
-            {{titre}}
-        </p>
+        <ul class="nav">
+            <li class="btn btn-primary btn-nav">
+                <router-link to="/" exact>Acceuil</router-link>
+            </li>
+            <li class="btn btn-primary btn-nav">
+                <router-link to="/page1">Page1</router-link>
+            </li>
+            <li class="btn btn-primary btn-nav">
+                <router-link to="/page2">Page2</router-link>
+            </li>
+            <li class="btn btn-primary btn-nav">
+                <router-link to="/blogspot/:id">BlogSpot</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 
-/* import {emitter} from '../../main' */
  
 export default {
     name: 'Header',
@@ -17,26 +27,7 @@ export default {
             titre: 'La To-Do List'
         }
     },
-    /* beforeCreate(){
-        console.log('il va etre créé !');
-    },
-    created(){
-        console.log('Le composant est créé !');
-        emitter.on('changeTitle', (data) =>{
-            this.titre = data
-        } )
-    },
-    beforeMount(){
-        console.log('il va etre monté dans le DOM ');
-    },
-    mounted(){
-        console.log('il est integré dans le DOM ');
-    }, beforeUpdate(){
-        console.log('il va se mettre à jour');
-    },
-    updated(){
-        console.log("Le composant s'est bien à jour!");
-    } */
+    
 }
 </script>
 

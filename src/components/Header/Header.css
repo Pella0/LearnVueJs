@@ -4,8 +4,25 @@
     height: 50px;
     background: #333;
     width: 100%;
-    text-align: center;
     line-height: 50px;
-    font-size: 25px;
     color: #f1f1f1f1;
+    display: flex;
+    flex-direction: row;
+}
+.btn-nav{
+    margin:5px;
+    background-color: #333;
+    border-color: #333;
+
+}
+.btn-nav:hover{
+    background-color: #333;
+    border-color:#333;
+}
+.btn-nav a{
+    color: #f1f1f1f1
+}
+.btn-nav a:hover{
+    color: #f1f1f1f1
+    
 }
