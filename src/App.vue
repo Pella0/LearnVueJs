@@ -1,23 +1,17 @@
-<template>
-  
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <Content/>
-  <Header/>
+<template> 
+  <div id="nav">
+    <router-link to="/">Acceuil</router-link> |
+    <router-link to="/page1">Page1</router-link>
+  </div>
+  <router-view/> 
 </template>
 
 <script>
-/* import HelloWorld from './components/HelloWorld.vue' */
-import Content from './components/Content.vue'
-import Header from './components/Header/Header.vue'
 
 
 export default {
   name: 'App',
-  components: {
-    /* HelloWorld */
-    Content,
-    Header
-    
+  components: { 
   }
 }
 </script>
