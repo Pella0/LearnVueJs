@@ -14,7 +14,7 @@ export default {
     name: 'Header',
     data(){
         return {
-            titre: 'Mont titre de base'
+            titre: 'La To-Do List'
         }
     },
     /* beforeCreate(){

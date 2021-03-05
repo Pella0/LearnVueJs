@@ -1,67 +1,28 @@
 <template>
     <div class="container nt-5">
-        <h1>Notre premier formulaire</h1>
-        <form >
-            <div class="form-group">
-                <label for="prenom">Ton prenom</label>
-                <input v-on:input="toggleResult"  v-model.lazy="formData.prenom" type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="txt">Ton Texte</label><br/>
-                <textarea v-model.lazy="formData.txt" name="form-control" id="txt"></textarea>
-            </div>
+        <h1>Entrez des taches à faire</h1>
+        <form>
+            <label for="action">Action</label>
+            <input v-model="formData.tache" type="text" id="action" class="form-control">
 
-            <h3>SelectBox</h3>
-            <select v-model="formData.select">
-                <option v-for="(pays, index) in formData.listPays" :key="index">{{pays}}</option>
-            </select>
-
-
-            <h3 class="mt-3">Checkbox</h3>
-
-            <div class="form-check">
-                <input v-model="formData.checkFruits" value="fraise" id="fraise" type="checkbox" class="form-check-input">
-                <label for="fraise">Fraise</label>
-            </div>
-
-            <div class="form-check">
-                <input v-model="formData.checkFruits" value="banane" id="banane" type="checkbox" class="form-check-input">
-                <label for="banane">banane</label>
-            </div>
-
-            <div class="form-check">
-                <input v-model="formData.checkFruits" value="cacahuete" id="cacahuete" type="checkbox" class="form-check-input">
-                <label for="cacahuete">cacahuete</label>
-            </div>
-
-
-
-                <button @click.prevent="sendForm" class="btn btn-primary mt-3">Envoyer les données</button>
-
+        <button @click.prevent='creationItem' class="btn-btn-primary mb-3">Creer un tache</button>
         </form>
+
+        <ul>
+            <li v-for="(taches, index) in tableauTaches" :key="index">
+                <Item :id="index" :tache="taches" :suppression="suppression"></Item>
+            </li>
+        </ul>
+   
     </div>
 
-    <div v-if="infoSubmit">
-        <h2>Resultats</h2>
-        <div class="card p-3">
-            <p>Prenom : {{formData.prenom}}</p>
-            <p style="white-space: pre">Texte : {{formData.txt}}</p>
-            
-            <p>Select Resultats : {{formData.select}}</p>
-            
-            
-            <p>Resultat Checkbox</p>
-            <ul>
-                <li v-for="(fruit,index) in formData.checkFruits" :key="index">{{fruit}}</li>
-            </ul>
-        </div>
-    </div>
+
 </template>
 
 
 <script>
 
-
+import Item from './Item/Item'
 
 
 
@@ -69,27 +30,25 @@ export default {
     name:'Content',  
     data(){
         return {
-            formData:{
-                prenom: '',
-                txt: '',
-                checkFruits: [],
-                select: '',
-                listPays: ['Russie', 'France', 'Canada', 'Afrique du Sud']
-                
-            },
-            infoSubmit: false,
+          formData: {
+              tache: ''
+          },
+          tableauTaches: ['javaScript', 'Vue', 'Python', 'React']  
         }
     },
     components: {
-        
+        Item
         
     },
     methods: {
-        sendForm: function(){
-            this.infoSubmit = true
+        creationItem: function() {
+            this.tableauTaches.push(this.formData.tache)
+            this.formData.tache=''
         },
-        toggleResult: function(){
-            this.infoSubmit=false
+        suppression: function(e){
+            console.log(e.target.parentNode.id)
+            /* e.target.parentNode.id  est l'endroit du tableau && 1 est le nombre d'element que l'on veut retirer */
+            this.tableauTaches.splice(e.target.parentNode.id,1) 
         }
         
     },
@@ -103,5 +62,9 @@ export default {
 <style scoped >
     h1{
         margin-top: 100px!important;
+    }
+    ul{
+        list-style-type: none;
+        padding:0;
     }
 </style>
